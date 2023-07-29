@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from "react-scroll";
+import { Link } from 'react-router-dom';
 import { MenuItems, MenuItems2} from './MenuItems';
 import './nav.css';
 import './Dropdown.css';
 import '../../index.css';
 import {BiMenu} from 'react-icons/bi'
 import {GrFormClose} from 'react-icons/gr'
+
 function Navbar() {
-    const [showLinks, setShowlinks] = useState(false);
+    const [showLinks, setShowLinks] = useState(false);
     const [activeSubMenu, setActiveSubMenu] = useState(null);
 
     const handleShowLinks = () => {
-        setShowlinks(!showLinks);
+        setShowLinks(!showLinks);
     };
 
     const handleMouseEnter = (index) => {
@@ -26,56 +27,56 @@ function Navbar() {
         <>
             <div className={`navbar ${showLinks ? "show-nav" : "hide-nav"}`}>
                 <div className="grid-test">
-                    <Link to='home' spy={true} smooth={true} offset={0} duration={800} className='navbar_logo'>
+                    <a href='/' className='navbar_logo'>
                         Claquettes-Swing
-                    </Link>
+                    </a>
                     <ul className='navbar_links'>
                         <li className='navbar_link'>
-                            <Link to='professeure' spy={true} smooth={true} offset={-100} duration={800} className="link" onClick={handleShowLinks}>
+                            <a href='/' className="link" onClick={handleShowLinks}>
                                 Professeure
-                            </Link>
+                            </a>
                         </li>
                         <li className='navbar_link'>
-                            <Link to='cours' spy={true} smooth={true} offset={-100} duration={800} className="link" onClick={handleShowLinks}>
+                            <a href='cours' className="link" onClick={handleShowLinks}>
                                 Cours
-                            </Link>
+                            </a>
                         </li>
                         <li className='navbar_link'>
-                            <Link to='stages' spy={true} smooth={true} offset={-100} duration={800} className="link" onClick={handleShowLinks}>
+                            <a href='stages' className="link" onClick={handleShowLinks}>
                                 Stages
-                            </Link>
+                            </a>
                         </li>
                         <li className='navbar_link' onMouseEnter={() => handleMouseEnter(0)} onMouseLeave={handleMouseLeave} onClick={handleShowLinks}>
-                        <Link to='spectacles' spy={true} smooth={true} offset={-100} duration={800}>Spectacles</Link>
+                            <p className='link'>Spectacles</p>
                             {activeSubMenu === 0 &&
                                 <ul className='dropdown-menu'>
                                     {MenuItems.map((item, index) => (
                                         <li key={index}>
-                                            <Link to={item.path} spy={true} smooth={true} offset={-100} duration={800} className='dropdown-link' onClick={handleShowLinks}>
+                                            <a href={item.path} className='dropdown-link' onClick={handleShowLinks}>
                                                 {item.title}
-                                            </Link>
+                                            </a>
                                         </li>
                                     ))}
                                 </ul>
                             }
                         </li>
                         <li className='navbar_link' onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave} onClick={handleShowLinks}>
-                            <Link to='contact' spy={true} smooth={true} offset={0} duration={800}>Contact</Link>
+                            <p className='link'>Contact</p>
                             {activeSubMenu === 1 &&
                                 <ul className='dropdown-menu'>
                                     {MenuItems2.map((item, index) => (
                                         <li key={index}>
-                                            <Link to={item.path} spy={true} smooth={true} offset={-100} duration={800} className='dropdown-link' onClick={handleShowLinks}>
+                                            <a href={item.path} className='dropdown-link' onClick={handleShowLinks}>
                                                 {item.title}
-                                            </Link>
+                                            </a>
                                         </li>
                                     ))}
                                 </ul>
                             }
                         </li>
-                </ul>
-            </div>
-            <div className='navbar_icon' onClick={handleShowLinks}>
+                    </ul>
+                </div>
+                <div className='navbar_icon' onClick={handleShowLinks}>
                 {showLinks ? <GrFormClose/> : <BiMenu/>}
             </div>
         </div>

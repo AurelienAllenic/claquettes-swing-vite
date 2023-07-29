@@ -16,8 +16,21 @@
 
 a {
  text-decoration: none;
+ color: black;
+ font-weight: 400;
+}
+p{
+  margin-block-end: 0px;
+  margin-block-start: 0px;
 }
 body{
   margin: 0;
   padding: 0;
+}
+.loader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
 }
